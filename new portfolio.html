@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahima | Software Developer</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css)" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css)" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap)" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #807f8729;
+            --primary-dark: #47474a;
+            --secondary: #757376;
+            --dark: #2d3436;
+            --light: #f8f9fa;
+            --gradient: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark) !important;
+            margin: 0 10px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #3d3e40 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="[w3.org](http://www.w3.org/2000/svg)" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .typing-text {
+            color: var(--secondary);
+            border-right: 3px solid var(--secondary);
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: var(--secondary); }
+            50% { border-color: transparent; }
+        }
+
+        .hero-img {
+            position: relative;
+        }
+
+        .hero-img::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: var(--gradient);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morphing 8s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes morphing {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+        }
+
+        .profile-placeholder {
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 5px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-custom {
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary-custom {
+            background: white;
+            color: var(--primary);
+        }
+
+        .btn-primary-custom:hover {
+            background: var(--dark);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline-custom:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+        }
+
+        /* About Section */
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .info-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-box i {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .info-box h5 {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .info-box p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: var(--dark);
+            color: white;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .skill-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .skill-card h5 {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .skill-level {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(108, 92, 231, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--secondary);
+        }
+
+        .progress-ring {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+
+        .progress-ring__circle {
+            stroke-dasharray: 314;
+            stroke-dashoffset: 314;
+            animation: progress 1.5s ease-out forwards;
+        }
+
+        /* Projects Section */
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-img {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .project-card:hover .project-img::after {
+            left: 100%;
+        }
+
+        .project-body {
+            padding: 30px;
+        }
+
+        .project-body h5 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-body p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tech-tag {
+            padding: 5px 12px;
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Education & Experience */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        /* Achievements */
+        .achievement-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .achievement-card:hover {
+            transform: scale(1.05);
+        }
+
+        .achievement-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-info i {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+        }
+
+        .contact-form .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px 20px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .contact-form .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .contact-form .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+            box-shadow: none;
+            color: white;
+        }
+
+        .contact-form .btn-submit {
+            background: white;
+            color: var(--primary);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .profile-placeholder {
+                width: 200px;
+                height: 200px;
+                font-size: 5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                text-align: center;
+                padding-top: 100px;
+            }
+            
+            .hero-img {
+                margin-top: 50px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mahima</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <p class="text-white-50 mb-2">Hello, I'm</p>
+                    <h1>Mahima</h1>
+                    <p class="subtitle">
+                        <span class="typing-text" id="typing"></span>
+                    </p>
+                    <p class="text-white-50 mb-4">
+                        BCA Student at SRM Institute of Science and Technology, Ramapuram
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#projects" class="btn btn-custom btn-primary-custom">View Projects</a>
+                        <a href="#contact" class="btn btn-custom btn-outline-custom">Contact Me</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-img d-inline-block">
+                        <div class="profile-placeholder">
+                            <i class="bi bi-person-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 fade-in">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Getting to know me better</p>
+                    <div class="about-content">
+                        <p>
+                            I'm Mahima, currently pursuing my Bachelor of Computer Applications at 
+                            <strong>SRM Institute of Science and Technology, Ramapuram</strong>, 
+                            maintaining a strong CGPA of <strong>8.45</strong>.
+                        </p>
+                        <p>
+                            I completed an AICTE internship at <strong>Inspire Softech Solutions</strong>, 
+                            where I worked on Full Stack Web Development using HTML, CSS, and JavaScript. 
+                            That experience helped me understand how frontend design connects with backend 
+                            logic and improved my problem-solving skills.
+                        </p>
+                        <p>
+                            My key strengths are being <strong>detail-oriented</strong> and 
+                            <strong>quick to adapt</strong> to new technologies. I'm eager to learn 
+                            and excited to contribute to innovative projects.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-mortarboard"></i>
+                                <h5>Education</h5>
+                                <p>BCA, SRM IST Ramapuram</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-graph-up-arrow"></i>
+                                <h5>CGPA</h5>
+                                <p>8.45 / 10</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-briefcase"></i>
+                                <h5>Internship</h5>
+                                <p>Inspire Softech Solutions</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <i class="bi bi-trophy"></i>
+                                <h5>Achievement</h5>
+                                <p>Top Podium - Code Brigades</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2 class="section-title text-white">My Skills</h2>
+                <p class="section-subtitle text-white-50">Technologies I work with</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-filetype-html"></i>
+                        </div>
+                        <h5>HTML5</h5>
+                        <p class="text-white-50 small">Structure & Semantics</p>
+                        <span class="skill-level">Beginner</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-filetype-css"></i>
+                        </div>
+                        <h5>CSS3</h5>
+                        <p class="text-white-50 small">Styling & Animations</p>
+                        <span class="skill-level">Learning</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-filetype-js"></i>
+                        </div>
+                        <h5>JavaScript</h5>
+                        <p class="text-white-50 small">Interactivity & Logic</p>
+                        <span class="skill-level">Basic</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-chat-dots"></i>
+                        </div>
+                        <h5>Communication</h5>
+                        <p class="text-white-50 small">Team Collaboration</p>
+                        <span class="skill-level">Strong</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Skills -->
+            <div class="row g-4 mt-4">
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-bootstrap"></i>
+                        </div>
+                        <h5>Bootstrap</h5>
+                        <p class="text-white-50 small">Responsive Design</p>
+                        <span class="skill-level">Learning</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h5>Canva</h5>
+                        <p class="text-white-50 small">UI/UX Design</p>
+                        <span class="skill-level">Advanced</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-git"></i>
+                        </div>
+                        <h5>Git</h5>
+                        <p class="text-white-50 small">Version Control</p>
+                        <span class="skill-level">Basic</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 fade-in">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </div>
+                        <h5>Problem Solving</h5>
+                        <p class="text-white-50 small">Critical Thinking</p>
+                        <span class="skill-level">Strong</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2 class="section-title">My Projects</h2>
+                <p class="section-subtitle">Some of my recent work</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="bi bi-person-badge"></i>
+                        </div>
+                        <div class="project-body">
+                            <h5>Personal Portfolio Website</h5>
+                            <p>A responsive portfolio website showcasing my skills, projects, and achievements with modern design elements.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Bootstrap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="project-card">
+                        <div class="project-img" style="background: linear-gradient(135deg, #00cec9, #0984e3);">
+                            <i class="bi bi-box-arrow-in-right"></i>
+                        </div>
+                        <div class="project-body">
+                            <h5>Simple Login Page</h5>
+                            <p>A clean and user-friendly login interface with form validation and responsive design for all devices.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="project-card">
+                        <div class="project-img" style="background: linear-gradient(135deg, #fd79a8, #e84393);">
+                            <i class="bi bi-plus-circle"></i>
+                        </div>
+                        <div class="project-body">
+                            <h5>More Coming Soon</h5>
+                            <p>Currently working on exciting new projects to expand my portfolio and showcase my growing skills.</p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">In Progress</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="experience" style="background: #f8f9fa;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 fade-in">
+                    <h2 class="section-title">Experience</h2>
+                    <p class="section-subtitle">My professional journey</p>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <span class="timeline-date">AICTE Internship</span>
+                                <h5>Full Stack Web Developer Intern</h5>
+                                <h6 class="text-primary">Inspire Softech Solutions</h6>
+                                <p class="text-muted mt-2">
+                                    Worked on full stack web development projects using HTML, CSS, and JavaScript. 
+                                    Gained hands-on experience in connecting frontend design with backend logic.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in">
+                    <h2 class="section-title">Education</h2>
+                    <p class="section-subtitle">Academic background</p>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <span class="timeline-date">2022 - Present</span>
+                                <h5>Bachelor of Computer Applications (BCA)</h5>
+                                <h6 class="text-primary">SRM Institute of Science and Technology</h6>
+                                <p class="text-muted mt-2">
+                                    Ramapuram Campus | CGPA: 8.45
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2 class="section-title">Achievements</h2>
+                <p class="section-subtitle">Milestones and accomplishments</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="bi bi-trophy-fill"></i>
+                        </div>
+                        <h5>Top Podium Finish</h5>
+                        <p class="text-muted">Inter-Departmental Technical Fest by Code Brigades</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="bi bi-award-fill"></i>
+                        </div>
+                        <h5>Professional Workshop</h5>
+                        <p class="text-muted">Advanced Canva Design Workshop by Skill Elevation Club</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <i class="bi bi-patch-check-fill"></i>
+                        </div>
+                        <h5>AICTE Certification</h5>
+                        <p class="text-muted">Successfully completed internship at Inspire Softech Solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 fade-in">
+                    <h2 class="section-title text-white">Get In Touch</h2>
+                    <p class="section-subtitle text-white-50">Let's work together</p>
+                    
+                    <div class="contact-info">
+                        <i class="bi bi-envelope"></i>
+                        <div>
+                            <h6 class="mb-0">Email</h6>
+                            <p class="mb-0 text-white-50">mahima@email.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <i class="bi bi-geo-alt"></i>
+                        <div>
+                            <h6 class="mb-0">Location</h6>
+                            <p class="mb-0 text-white-50">Chennai, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <i class="bi bi-mortarboard"></i>
+                        <div>
+                            <h6 class="mb-0">University</h6>
+                            <p class="mb-0 text-white-50">SRM IST, Ramapuram</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" title="GitHub"><i class="bi bi-github"></i></a>
+                        <a href="#" title="Twitter"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" title="Instagram"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7 fade-in">
+                    <form class="contact-form" id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Subject" required>
+                        <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-submit">
+                            <i class="bi bi-send me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; 2025 Mahima. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="[cdn.jsdelivr.net](https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)"></script>
+    
+    <script>
+        // Typing Effect
+        const typingTexts = ['Software Developer', 'Web Developer', 'BCA Student', 'Problem Solver', 'Quick Learner'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typing');
+
+        function typeText() {
+            const currentText = typingTexts[textIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % typingTexts.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeText, typeSpeed);
+        }
+
+        typeText();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Close mobile menu
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    navbarCollapse.classList.remove('show');
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Skill cards hover effect
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
